@@ -2,11 +2,12 @@ const admin = require("firebase-admin");
 const express = require("express");
 const app = express();
 
-const serviceAccount = require("./serviceAccountKey.json");
-
+const admin = require("firebase-admin");
+const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_KEY);
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
+
 
 const db = admin.firestore();
 const messaging = admin.messaging();
